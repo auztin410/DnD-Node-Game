@@ -1,8 +1,24 @@
 var inquirer = require("inquirer");
 
-var playersHp = 100;
-var goblinHp = 15;
+var playersHp = 50;
+var goblinsHp = 15;
 
+function goblinAttack() {
+    playersHp--
+    playersHp--
+    playersHp--
+    playersHp--
+    playersHp--
+
+}
+
+function yourAttack() {
+    goblinsHp--
+    goblinsHp--
+    goblinsHp--
+    goblinsHp--
+    goblinsHp--
+}
 
 inquirer
     .prompt([
@@ -30,31 +46,576 @@ inquirer
             return;
         }
         else {
-            console.log("You are ready to go on your adventure " + inquirerResponse.name + " you have your " + inquirerResponse.weapon + " to aide your in combat!");
+            console.log("You are ready to go on your adventure " + inquirerResponse.name + " you have your " + inquirerResponse.weapon + " to aide you in combat!");
             console.log("A goblin attacks you on your way our of town!");
-            
-            inquirer.prompt([
+        }
+        inquirer.prompt([
+            {
+                type: "list",
+                choices: ["1", "2", "3", "4", "5"],
+                message: "Choose an attack number!",
+                name: "attackNumber1"
+            }
+        ])
+            .then(function (inquirerResponse) {
+                var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                if (inquirerResponse.attackNumber1 == randomNumber) {
+                    yourAttack();
+                    console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+                }
+                else {
+                    goblinAttack();
+                    console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+                }
+
+                inquirer.prompt([
                     {
                         type: "list",
-                        choices: [1, 2, 3, 4, 5],
+                        choices: ["1", "2", "3", "4", "5"],
                         message: "Choose an attack number!",
                         name: "attackNumber1"
                     }
                 ])
-                .then(function (inquirerResponse) {
-                    var randomNumber = Math.floor(Math.random() * 5) + 1;
+                    .then(function (inquirerResponse) {
+                        var randomNumber = Math.floor(Math.random() * 5) + 1;
 
-                    if (inquirerResponse.attackNumber1 === randomNumber) {
-                        goblinHp - 5;
-                        console.log("You did 5 Damage to the goblin! it has " + goblinHp + " Hp left.")
-                    }
-                    else {
-                        playersHp - 5;
-                        console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
-                    }
+                        if (inquirerResponse.attackNumber1 == randomNumber) {
+                            yourAttack();
+                            console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
 
-                })
-        }
+                            if (goblinsHp == 0) {
+                                console.log("You have defeated the goblin! YOU WIN!");
+                                return;
+                            }
+                        }
+                        else {
+                            goblinAttack();
+                            console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                            if (playersHp == 0) {
+                                console.log("You have been killed by the goblin! YOU LOSE!");
+                                return;
+                            }
+                        }
+
+                        inquirer.prompt([
+                            {
+                                type: "list",
+                                choices: ["1", "2", "3", "4", "5"],
+                                message: "Choose an attack number!",
+                                name: "attackNumber1"
+                            }
+                        ])
+                            .then(function (inquirerResponse) {
+                                var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                if (inquirerResponse.attackNumber1 == randomNumber) {
+                                    yourAttack();
+                                    console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                    if (goblinsHp == 0) {
+                                        console.log("You have defeated the goblin! YOU WIN!");
+                                        return;
+                                    }
+                                }
+                                else {
+                                    goblinAttack();
+                                    console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                    if (playersHp == 0) {
+                                        console.log("You have been killed by the goblin! YOU LOSE!");
+                                        return;
+                                    }
+                                }
+
+                                inquirer.prompt([
+                                    {
+                                        type: "list",
+                                        choices: ["1", "2", "3", "4", "5"],
+                                        message: "Choose an attack number!",
+                                        name: "attackNumber1"
+                                    }
+                                ])
+                                    .then(function (inquirerResponse) {
+                                        var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                        if (inquirerResponse.attackNumber1 == randomNumber) {
+                                            yourAttack();
+                                            console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                            if (goblinsHp == 0) {
+                                                console.log("You have defeated the goblin! YOU WIN!");
+                                                return;
+                                            }
+                                        }
+                                        else {
+                                            goblinAttack();
+                                            console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                            if (playersHp == 0) {
+                                                console.log("You have been killed by the goblin! YOU LOSE!");
+                                                return;
+                                            }
+                                        }
+
+                                        inquirer.prompt([
+                                            {
+                                                type: "list",
+                                                choices: ["1", "2", "3", "4", "5"],
+                                                message: "Choose an attack number!",
+                                                name: "attackNumber1"
+                                            }
+                                        ])
+                                            .then(function (inquirerResponse) {
+                                                var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                                if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                    yourAttack();
+                                                    console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                                    if (goblinsHp == 0) {
+                                                        console.log("You have defeated the goblin! YOU WIN!");
+                                                        return;
+                                                    }
+                                                }
+                                                else {
+                                                    goblinAttack();
+                                                    console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                                    if (playersHp == 0) {
+                                                        console.log("You have been killed by the goblin! YOU LOSE!");
+                                                        return;
+                                                    }
+                                                }
+
+                                                inquirer.prompt([
+                                                    {
+                                                        type: "list",
+                                                        choices: ["1", "2", "3", "4", "5"],
+                                                        message: "Choose an attack number!",
+                                                        name: "attackNumber1"
+                                                    }
+                                                ])
+                                                    .then(function (inquirerResponse) {
+                                                        var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                                        if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                            yourAttack();
+                                                            console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                                            if (goblinsHp == 0) {
+                                                                console.log("You have defeated the goblin! YOU WIN!");
+                                                                return;
+                                                            }
+                                                        }
+                                                        else {
+                                                            goblinAttack();
+                                                            console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                                            if (playersHp == 0) {
+                                                                console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                return;
+                                                            }
+                                                        }
+
+                                                        inquirer.prompt([
+                                                            {
+                                                                type: "list",
+                                                                choices: ["1", "2", "3", "4", "5"],
+                                                                message: "Choose an attack number!",
+                                                                name: "attackNumber1"
+                                                            }
+                                                        ])
+                                                            .then(function (inquirerResponse) {
+                                                                var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                                                if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                                    yourAttack();
+                                                                    console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                                                    if (goblinsHp == 0) {
+                                                                        console.log("You have defeated the goblin! YOU WIN!");
+                                                                        return;
+                                                                    }
+                                                                }
+                                                                else {
+                                                                    goblinAttack();
+                                                                    console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                                                    if (playersHp == 0) {
+                                                                        console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                        return;
+                                                                    }
+                                                                }
+
+                                                                inquirer.prompt([
+                                                                    {
+                                                                        type: "list",
+                                                                        choices: ["1", "2", "3", "4", "5"],
+                                                                        message: "Choose an attack number!",
+                                                                        name: "attackNumber1"
+                                                                    }
+                                                                ])
+                                                                    .then(function (inquirerResponse) {
+                                                                        var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                                                        if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                                            yourAttack();
+                                                                            console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                                                            if (goblinsHp == 0) {
+                                                                                console.log("You have defeated the goblin! YOU WIN!");
+                                                                                return;
+                                                                            }
+                                                                        }
+                                                                        else {
+                                                                            goblinAttack();
+                                                                            console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                                                            if (playersHp == 0) {
+                                                                                console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                                return;
+                                                                            }
+                                                                        }
+
+                                                                        inquirer.prompt([
+                                                                            {
+                                                                                type: "list",
+                                                                                choices: ["1", "2", "3", "4", "5"],
+                                                                                message: "Choose an attack number!",
+                                                                                name: "attackNumber1"
+                                                                            }
+                                                                        ])
+                                                                            .then(function (inquirerResponse) {
+                                                                                var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                                                                if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                                                    yourAttack();
+                                                                                    console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                                                                    if (goblinsHp == 0) {
+                                                                                        console.log("You have defeated the goblin! YOU WIN!");
+                                                                                        return;
+                                                                                    }
+                                                                                }
+                                                                                else {
+                                                                                    goblinAttack();
+                                                                                    console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                                                                    if (playersHp == 0) {
+                                                                                        console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                                        return;
+                                                                                    }
+                                                                                }
+
+                                                                                inquirer.prompt([
+                                                                                    {
+                                                                                        type: "list",
+                                                                                        choices: ["1", "2", "3", "4", "5"],
+                                                                                        message: "Choose an attack number!",
+                                                                                        name: "attackNumber1"
+                                                                                    }
+                                                                                ])
+                                                                                    .then(function (inquirerResponse) {
+                                                                                        var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                                                                        if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                                                            yourAttack();
+                                                                                            console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                                                                            if (goblinsHp == 0) {
+                                                                                                console.log("You have defeated the goblin! YOU WIN!");
+                                                                                                return;
+                                                                                            }
+                                                                                        }
+                                                                                        else {
+                                                                                            goblinAttack();
+                                                                                            console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                                                                            if (playersHp == 0) {
+                                                                                                console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                                                return;
+                                                                                            }
+                                                                                        }
+
+                                                                                        inquirer.prompt([
+                                                                                            {
+                                                                                                type: "list",
+                                                                                                choices: ["1", "2", "3", "4", "5"],
+                                                                                                message: "Choose an attack number!",
+                                                                                                name: "attackNumber1"
+                                                                                            }
+                                                                                        ])
+                                                                                            .then(function (inquirerResponse) {
+                                                                                                var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                                                                                if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                                                                    yourAttack();
+                                                                                                    console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                                                                                    if (goblinsHp == 0) {
+                                                                                                        console.log("You have defeated the goblin! YOU WIN!");
+                                                                                                        return;
+                                                                                                    }
+                                                                                                }
+                                                                                                else {
+                                                                                                    goblinAttack();
+                                                                                                    console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                                                                                    if (playersHp == 0) {
+                                                                                                        console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                                                        return;
+                                                                                                    }
+                                                                                                }
+
+                                                                                                inquirer.prompt([
+                                                                                                    {
+                                                                                                        type: "list",
+                                                                                                        choices: ["1", "2", "3", "4", "5"],
+                                                                                                        message: "Choose an attack number!",
+                                                                                                        name: "attackNumber1"
+                                                                                                    }
+                                                                                                ])
+                                                                                                    .then(function (inquirerResponse) {
+                                                                                                        var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                                                                                        if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                                                                            yourAttack();
+                                                                                                            console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                                                                                            if (goblinsHp == 0) {
+                                                                                                                console.log("You have defeated the goblin! YOU WIN!");
+                                                                                                                return;
+                                                                                                            }
+                                                                                                        }
+                                                                                                        else {
+                                                                                                            goblinAttack();
+                                                                                                            console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                                                                                            if (playersHp == 0) {
+                                                                                                                console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                                                                return;
+                                                                                                            }
+                                                                                                        }
+
+                                                                                                        inquirer.prompt([
+                                                                                                            {
+                                                                                                                type: "list",
+                                                                                                                choices: ["1", "2", "3", "4", "5"],
+                                                                                                                message: "Choose an attack number!",
+                                                                                                                name: "attackNumber1"
+                                                                                                            }
+                                                                                                        ])
+                                                                                                            .then(function (inquirerResponse) {
+                                                                                                                var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                                                                                                if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                                                                                    yourAttack();
+                                                                                                                    console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                                                                                                    if (goblinsHp == 0) {
+                                                                                                                        console.log("You have defeated the goblin! YOU WIN!");
+                                                                                                                        return;
+                                                                                                                    }
+                                                                                                                }
+                                                                                                                else {
+                                                                                                                    goblinAttack();
+                                                                                                                    console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                                                                                                    if (playersHp == 0) {
+                                                                                                                        console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                                                                        return;
+                                                                                                                    }
+                                                                                                                }
+
+                                                                                                                inquirer.prompt([
+                                                                                                                    {
+                                                                                                                        type: "list",
+                                                                                                                        choices: ["1", "2", "3", "4", "5"],
+                                                                                                                        message: "Choose an attack number!",
+                                                                                                                        name: "attackNumber1"
+                                                                                                                    }
+                                                                                                                ])
+                                                                                                                    .then(function (inquirerResponse) {
+                                                                                                                        var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                                                                                                        if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                                                                                            yourAttack();
+                                                                                                                            console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                                                                                                            if (goblinsHp == 0) {
+                                                                                                                                console.log("You have defeated the goblin! YOU WIN!");
+                                                                                                                                return;
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                        else {
+                                                                                                                            goblinAttack();
+                                                                                                                            console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                                                                                                            if (playersHp == 0) {
+                                                                                                                                console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                                                                                return;
+                                                                                                                            }
+                                                                                                                        }
+
+                                                                                                                        inquirer.prompt([
+                                                                                                                            {
+                                                                                                                                type: "list",
+                                                                                                                                choices: ["1", "2", "3", "4", "5"],
+                                                                                                                                message: "Choose an attack number!",
+                                                                                                                                name: "attackNumber1"
+                                                                                                                            }
+                                                                                                                        ])
+                                                                                                                            .then(function (inquirerResponse) {
+                                                                                                                                var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                                                                                                                if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                                                                                                    yourAttack();
+                                                                                                                                    console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                                                                                                                    if (goblinsHp == 0) {
+                                                                                                                                        console.log("You have defeated the goblin! YOU WIN!");
+                                                                                                                                        return;
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                                else {
+                                                                                                                                    goblinAttack();
+                                                                                                                                    console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                                                                                                                    if (playersHp == 0) {
+                                                                                                                                        console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                                                                                        return;
+                                                                                                                                    }
+                                                                                                                                }
+
+                                                                                                                                inquirer.prompt([
+                                                                                                                                    {
+                                                                                                                                        type: "list",
+                                                                                                                                        choices: ["1", "2", "3", "4", "5"],
+                                                                                                                                        message: "Choose an attack number!",
+                                                                                                                                        name: "attackNumber1"
+                                                                                                                                    }
+                                                                                                                                ])
+                                                                                                                                    .then(function (inquirerResponse) {
+                                                                                                                                        var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+                                                                                                                                        if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                                                                                                            yourAttack();
+                                                                                                                                            console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+
+                                                                                                                                            if (goblinsHp == 0) {
+                                                                                                                                                console.log("You have defeated the goblin! YOU WIN!");
+                                                                                                                                                return;
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                        else {
+                                                                                                                                            goblinAttack();
+                                                                                                                                            console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+
+                                                                                                                                            if (playersHp == 0) {
+                                                                                                                                                console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                                                                                                return;
+                                                                                                                                            }
+                                                                                                                                        }
+
+                                                                                                                                        inquirer.prompt([
+                                                                                                                                            {
+                                                                                                                                                type: "list",
+                                                                                                                                                choices: ["1", "2", "3", "4", "5"],
+                                                                                                                                                message: "Choose an attack number!",
+                                                                                                                                                name: "attackNumber1"
+                                                                                                                                            }
+                                                                                                                                        ])
+                                                                                                                                        .then(function (inquirerResponse) {
+                                                                                                                                            var randomNumber = Math.floor(Math.random() * 5) + 1;
+                                                                                                                                        
+                                                                                                                                            if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                                                                                                                yourAttack();
+                                                                                                                                                console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+                                                                                                                                        
+                                                                                                                                                if(goblinsHp == 0) {
+                                                                                                                                                    console.log("You have defeated the goblin! YOU WIN!");
+                                                                                                                                                    return;
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                            else {
+                                                                                                                                                goblinAttack();
+                                                                                                                                                console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+                                                                                                                                        
+                                                                                                                                                if(playersHp == 0) {
+                                                                                                                                                    console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                                                                                                    return;
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                
+                                                                                                                                            inquirer.prompt([
+                                                                                                                                                {
+                                                                                                                                                    type: "list",
+                                                                                                                                                    choices: ["1", "2", "3", "4", "5"],
+                                                                                                                                                    message: "Choose an attack number!",
+                                                                                                                                                    name: "attackNumber1"
+                                                                                                                                                }
+                                                                                                                                            ])
+                                                                                                                                            .then(function (inquirerResponse) {
+                                                                                                                                                var randomNumber = Math.floor(Math.random() * 5) + 1;
+                                                                                                                                            
+                                                                                                                                                if (inquirerResponse.attackNumber1 == randomNumber) {
+                                                                                                                                                    yourAttack();
+                                                                                                                                                    console.log("You did 5 Damage to the goblin! it has " + goblinsHp + " Hp left.")
+                                                                                                                                            
+                                                                                                                                                    if(goblinsHp == 0) {
+                                                                                                                                                        console.log("You have defeated the goblin! YOU WIN!");
+                                                                                                                                                        return;
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                                else {
+                                                                                                                                                    goblinAttack();
+                                                                                                                                                    console.log("The Goblin has hit you for 5 Damage your Hp is at " + playersHp);
+                                                                                                                                            
+                                                                                                                                                    if(playersHp == 0) {
+                                                                                                                                                        console.log("You have been killed by the goblin! YOU LOSE!");
+                                                                                                                                                        return;
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                    
+                                                                                                                    
+                                                                                                                                                
+                                                                                                                                            })
+                                                                                                                                            
+                                                                                                                                        })
+
+                                                                                                                                    })
+
+                                                                                                                            })
+
+                                                                                                                    })
+
+                                                                                                            })
+
+                                                                                                    })
+
+                                                                                            })
+
+                                                                                    })
+
+                                                                            })
+
+                                                                    })
+
+                                                            })
+
+                                                    })
+
+                                            })
+
+                                    })
 
 
+
+                            })
+
+                    })
+
+            })
     })
