@@ -1,7 +1,7 @@
 {
   "name": "DnD-Node-Game",
   "version": "1.0.0",
-  "description": "",
+  "description": "A DnD like battle game of luck! CAn you beat the puny goblin? Test your confidence against him!",
   "main": "game.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/auztin410/DnD-Node-Game.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["game","inquirer", "DnD", "number guess", "fun"],
+  "author": "Austin Saflarske",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/auztin410/DnD-Node-Game/issues"
